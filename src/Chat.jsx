@@ -33,7 +33,6 @@ function Chat() {
         console.log(document.getElementById("message").value, message.payloadString)
         if (message.payloadString !== document.getElementById("message").value) {history.push({message: message.payloadString, thisUser: 0})}
         else {document.getElementById("message").value = ""
-            
         }
         setState(state + 1)
       };
@@ -51,8 +50,15 @@ function Chat() {
             message.destinationName = localStorage.getItem("currentChat");
             client.send(message);
         }
+
         
     }
+
+    useEffect(() => {
+        let objDiv = document.getElementById("chat");
+        console.log(document.getElementById("chat").scrollHeight)
+        objDiv.scrollTop = objDiv.scrollHeight;
+    })
 
     return (
         <div className="chat-page">
@@ -64,7 +70,7 @@ function Chat() {
             <div className="chat-head">
                 <p>Айди сессии: {localStorage.getItem("currentChat")}</p>
             </div>
-            <div className="chat">
+            <div className="chat" id="chat">
                 <p style={{width: "100%"}}>
                 <ChatHistory data={history} className="messages"></ChatHistory>
                 </p>
