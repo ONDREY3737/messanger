@@ -24,8 +24,8 @@ client.connect({
 
 
 function Chat() {
-    const navigate = useNavigate()
 
+    const navigate = useNavigate()
 
     let [state, setState] = React.useState(1)
 
@@ -56,12 +56,14 @@ function Chat() {
 
     return (
         <div className="chat-page">
-            <button onClick={() => {
+            <button className="chat-back" onClick={() => {
                 history = []
                 navigate('/')
                 navigate(0)
-            }} style={{float: "left", marginLeft: "15px", color: "white"}}>Назад</button>
-            <p className="chat-head">Айди сессии: {localStorage.getItem("currentChat")}</p>
+            }}></button>
+            <div className="chat-head">
+                <p>Айди сессии: {localStorage.getItem("currentChat")}</p>
+            </div>
             <div className="chat">
                 <p style={{width: "100%"}}>
                 <ChatHistory data={history} className="messages"></ChatHistory>

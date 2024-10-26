@@ -19,8 +19,6 @@ function App() {
     setState(state+1)
   }
 
-  useEffect(() => {})
-
   return (
     <div className="all-chats">
       <AllChats></AllChats>
